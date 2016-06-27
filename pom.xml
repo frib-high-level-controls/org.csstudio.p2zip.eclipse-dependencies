@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright (c) 2013 DESY. All rights reserved. This program and the accompanying 
-  materials are made available under the terms of the Eclipse Distribution 
-  License v1.0 which accompanies this distribution, and is available at http://www.eclipse.org/org/documents/edl-v10.php 
-  Contributors: Jan Hatje - created the pom to build the plug-ins -->
+<!-- Copyright (c) 2013 DESY. All rights reserved. This program and the accompanying
+materials are made available under the terms of the Eclipse Distribution
+License v1.0 which accompanies this distribution, and is available at http://www.eclipse.org/org/documents/edl-v10.php
+Contributors: Jan Hatje - created the pom to build the plug-ins -->
 <project
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
   xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -48,8 +48,8 @@
       </snapshots>
     </pluginRepository>
   </pluginRepositories>
-  
-  <distributionManagement>  
+
+  <distributionManagement>
     <snapshotRepository>
       <id>controls</id>
       <url>http://p2.nscl.msu.edu:8080/maven/eclipse-4.5</url>
@@ -108,294 +108,256 @@
         <configuration>
           <!--<compilerArgument>-err:-forbidden</compilerArgument> -->
         </configuration>
-   </plugin>
-   <plugin>
-            <groupId>org.eclipse.tycho.extras</groupId>
-	    <artifactId>tycho-p2-extras-plugin</artifactId>
-	    <version>${tycho-extras.version}</version>
-	    <executions>
-                <execution>
-                    <id>eclipse-p2zip</id>
-                    <phase>prepare-package</phase>
-                    <goals>
-                        <goal>mirror</goal>
-                    </goals>
-                    <configuration>
-                        <source>
-                            <repository>
-				    <url>http://download.eclipse.org/releases/${eclipse.release}</url>
-				    <layout>p2</layout>
-                            </repository>
-                        </source>
-			<append>false</append>
-                        <latestVersionOnly>true</latestVersionOnly>
-			<destination>${project.build.directory}/eclipse</destination>
-                    </configuration>
-	    </execution> 
-	        <execution>
-                    <id>elipse-update-p2zip</id>
-                    <phase>prepare-package</phase>
-                    <goals>
-                        <goal>mirror</goal>
-                    </goals>
-                    <configuration>
-                        <source>
-                            <repository>
-				    <url>http://download.eclipse.org/eclipse/updates/${eclipse.version}</url>
-				    <layout>p2</layout>
-                            </repository>
-                        </source>
-			<append>false</append>
-                        <latestVersionOnly>true</latestVersionOnly>
-			<destination>${project.build.directory}/eclipse-updates</destination>
-                    </configuration>
-	    </execution> 
-	        <execution>
-                    <id>orbit-p2zip</id>
-                    <phase>prepare-package</phase>
-                    <goals>
-                        <goal>mirror</goal>
-                    </goals>
-                    <configuration>
-                        <source>
-                            <repository>
-				    <url>http://download.eclipse.org/tools/orbit/downloads/drops/${orbit.version}/repository/</url>
-				    <layout>p2</layout>
-                            </repository>
-                        </source>
-			<append>false</append>
-                        <latestVersionOnly>true</latestVersionOnly>
-			<destination>${project.build.directory}/orbit</destination>
-                    </configuration>
-		</execution>
-		<execution>
-                    <id>efx-p2zip</id>
-                    <phase>prepare-package</phase>
-                    <goals>
-                        <goal>mirror</goal>
-                    </goals>
-                    <configuration>
-                        <source>
-                            <repository>
-				    <url>http://download.eclipse.org/efxclipse/runtime-released/${efx.version}/site</url>
-				    <layout>p2</layout>
-                            </repository>
-                        </source>
-			<append>false</append>
-                        <latestVersionOnly>true</latestVersionOnly>
-			<destination>${project.build.directory}/efx</destination>
-                    </configuration>
-	        </execution>
-                <execution>
-                    <id>rap-p2zip</id>
-                    <phase>prepare-package</phase>
-                    <goals>
-                        <goal>mirror</goal>
-                    </goals>
-                    <configuration>
-                        <source>
-                            <repository>
-				    <url>http://download.eclipse.org/rt/rap/${rap.version}</url>
-				    <layout>p2</layout>
-                            </repository>
-                        </source>
-			<append>false</append>
-                        <latestVersionOnly>true</latestVersionOnly>
-			<destination>${project.build.directory}/rap</destination>
-                    </configuration>
-	        </execution>
-                <execution>
-                    <id>rap-gef-p2zip</id>
-                    <phase>prepare-package</phase>
-                    <goals>
-                        <goal>mirror</goal>
-                    </goals>
-                    <configuration>
-                        <source>
-                            <repository>
-				    <url>http://download.eclipse.org/rt/rap/incubator/nightly/gef/${rap-gef.version}</url>
-				    <layout>p2</layout>
-                            </repository>
-                        </source>
-			<append>false</append>
-                        <latestVersionOnly>true</latestVersionOnly>
-			<destination>${project.build.directory}/rap-gef</destination>
-                    </configuration>
-	        </execution>
-                <execution>
-                    <id>rap-e4-p2zip</id>
-                    <phase>prepare-package</phase>
-                    <goals>
-                        <goal>mirror</goal>
-                    </goals>
-                    <configuration>
-                        <source>
-                            <repository>
-				    <url>http://download.eclipse.org/rt/rap/incubator/${rap-e4.version}/e4/target/site</url>
-				    <layout>p2</layout>
-                            </repository>
-                        </source>
-			<append>false</append>
-                        <latestVersionOnly>true</latestVersionOnly>
-			<destination>${project.build.directory}/rap-e4</destination>
-                    </configuration>
-		</execution>
-            </executions>
-    </plugin>
-    <plugin>
-        <artifactId>maven-assembly-plugin</artifactId>
-        <version>2.5.3</version>
-	<configuration>
-	  <finalName>cs-studio-eclipse-${cs-studio-central.version}</finalName>
-          <descriptor>assembly/package.xml</descriptor>
-        </configuration>
-        <executions>
-          <execution>
-            <id>create-archive</id>
-            <phase>package</phase>
-            <goals>
-              <goal>single</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
-    <plugin>
-        <artifactId>maven-assembly-plugin</artifactId>
-        <version>2.5.3</version>
-	<configuration>
-	  <finalName>cs-studio-eclipse-${cs-studio-central.version}</finalName>
-          <descriptor>assembly/package.xml</descriptor>
-        </configuration>
+      <plugin>
+        <groupId>org.eclipse.tycho.extras</groupId>
+        <artifactId>tycho-p2-extras-plugin</artifactId>
+        <version>${tycho-extras.version}</version>
         <executions>
           <execution>
-            <id>create-archive</id>
-            <phase>package</phase>
+            <id>eclipse-p2zip</id>
+            <phase>prepare-package</phase>
             <goals>
-              <goal>single</goal>
+              <goal>mirror</goal>
             </goals>
+            <configuration>
+              <source>
+                <repository>
+                  <url>http://download.eclipse.org/releases/${eclipse.release}</url>
+                  <layout>p2</layout>
+                </repository>
+              </source>
+              <append>false</append>
+              <latestVersionOnly>true</latestVersionOnly>
+              <destination>${project.build.directory}/eclipse</destination>
+            </configuration>
           </execution>
-        </executions>
-      </plugin>
-    <plugin>
-        <artifactId>maven-assembly-plugin</artifactId>
-        <version>2.5.3</version>
-	<configuration>
-	  <finalName>eclipse-${cs-studio-central.version}</finalName>
-          <descriptor>assembly/package-eclipse.xml</descriptor>
-        </configuration>
-        <executions>
           <execution>
-            <id>create-archive</id>
-            <phase>package</phase>
+            <id>elipse-update-p2zip</id>
+            <phase>prepare-package</phase>
             <goals>
-              <goal>single</goal>
+              <goal>mirror</goal>
             </goals>
+            <configuration>
+              <source>
+                <repository>
+                  <url>http://download.eclipse.org/eclipse/updates/${eclipse.version}</url>
+                  <layout>p2</layout>
+                </repository>
+              </source>
+              <append>false</append>
+              <latestVersionOnly>true</latestVersionOnly>
+              <destination>${project.build.directory}/eclipse-updates</destination>
+            </configuration>
           </execution>
-        </executions>
-      </plugin>
-    <plugin>
-        <artifactId>maven-assembly-plugin</artifactId>
-        <version>2.5.3</version>
-	<configuration>
-	  <finalName>eclipse-updates-${cs-studio-central.version}</finalName>
-          <descriptor>assembly/package-eclipse-updates.xml</descriptor>
-        </configuration>
-        <executions>
           <execution>
-            <id>create-archive</id>
-            <phase>package</phase>
+            <id>orbit-p2zip</id>
+            <phase>prepare-package</phase>
             <goals>
-              <goal>single</goal>
+              <goal>mirror</goal>
             </goals>
+            <configuration>
+              <source>
+                <repository>
+                  <url>http://download.eclipse.org/tools/orbit/downloads/drops/${orbit.version}/repository/</url>
+                  <layout>p2</layout>
+                </repository>
+              </source>
+              <append>false</append>
+              <latestVersionOnly>true</latestVersionOnly>
+              <destination>${project.build.directory}/orbit</destination>
+            </configuration>
           </execution>
-        </executions>
-      </plugin>
-    <plugin>
-        <artifactId>maven-assembly-plugin</artifactId>
-        <version>2.5.3</version>
-	<configuration>
-	  <finalName>orbit-${cs-studio-central.version}</finalName>
-          <descriptor>assembly/package-orbit.xml</descriptor>
-        </configuration>
-        <executions>
           <execution>
-            <id>create-archive</id>
-            <phase>package</phase>
+            <id>efx-p2zip</id>
+            <phase>prepare-package</phase>
             <goals>
-              <goal>single</goal>
+              <goal>mirror</goal>
             </goals>
+            <configuration>
+              <source>
+                <repository>
+                  <url>http://download.eclipse.org/efxclipse/runtime-released/${efx.version}/site</url>
+                  <layout>p2</layout>
+                </repository>
+              </source>
+              <append>false</append>
+              <latestVersionOnly>true</latestVersionOnly>
+              <destination>${project.build.directory}/efx</destination>
+            </configuration>
           </execution>
-        </executions>
-      </plugin>
-    <plugin>
-        <artifactId>maven-assembly-plugin</artifactId>
-        <version>2.5.3</version>
-	<configuration>
-	  <finalName>efx-${cs-studio-central.version}</finalName>
-          <descriptor>assembly/package-efx.xml</descriptor>
-        </configuration>
-        <executions>
           <execution>
-            <id>create-archive</id>
-            <phase>package</phase>
+            <id>rap-p2zip</id>
+            <phase>prepare-package</phase>
             <goals>
-              <goal>single</goal>
+              <goal>mirror</goal>
             </goals>
+            <configuration>
+              <source>
+                <repository>
+                  <url>http://download.eclipse.org/rt/rap/${rap.version}</url>
+                  <layout>p2</layout>
+                </repository>
+              </source>
+              <append>false</append>
+              <latestVersionOnly>true</latestVersionOnly>
+              <destination>${project.build.directory}/rap</destination>
+            </configuration>
           </execution>
-        </executions>
-      </plugin>
-    <plugin>
-        <artifactId>maven-assembly-plugin</artifactId>
-        <version>2.5.3</version>
-	<configuration>
-	  <finalName>rap-${cs-studio-central.version}</finalName>
-          <descriptor>assembly/package-rap.xml</descriptor>
-        </configuration>
-        <executions>
           <execution>
-            <id>create-archive</id>
-            <phase>package</phase>
+            <id>rap-gef-p2zip</id>
+            <phase>prepare-package</phase>
             <goals>
-              <goal>single</goal>
+              <goal>mirror</goal>
             </goals>
+            <configuration>
+              <source>
+                <repository>
+                  <url>http://download.eclipse.org/rt/rap/incubator/nightly/gef/${rap-gef.version}</url>
+                  <layout>p2</layout>
+                </repository>
+              </source>
+              <append>false</append>
+              <latestVersionOnly>true</latestVersionOnly>
+              <destination>${project.build.directory}/rap-gef</destination>
+            </configuration>
           </execution>
-        </executions>
-      </plugin>
-    <plugin>
-        <artifactId>maven-assembly-plugin</artifactId>
-        <version>2.5.3</version>
-	<configuration>
-	  <finalName>rap-gef-${cs-studio-central.version}</finalName>
-          <descriptor>assembly/package-rap-gef.xml</descriptor>
-        </configuration>
-        <executions>
           <execution>
-            <id>create-archive</id>
-            <phase>package</phase>
+            <id>rap-e4-p2zip</id>
+            <phase>prepare-package</phase>
             <goals>
-              <goal>single</goal>
+              <goal>mirror</goal>
             </goals>
-          </execution>
-        </executions>
-      </plugin>
-    <plugin>
-        <artifactId>maven-assembly-plugin</artifactId>
-        <version>2.5.3</version>
-	<configuration>
-	  <finalName>rap-e4-${cs-studio-central.version}</finalName>
-          <descriptor>assembly/package-rap-e4.xml</descriptor>
-        </configuration>
-        <executions>
-          <execution>
-            <id>create-archive</id>
-            <phase>package</phase>
-            <goals>
-              <goal>single</goal>
-            </goals>
+            <configuration>
+              <source>
+                <repository>
+                  <url>http://download.eclipse.org/rt/rap/incubator/${rap-e4.version}/e4/target/site</url>
+                  <layout>p2</layout>
+                </repository>
+              </source>
+              <append>false</append>
+              <latestVersionOnly>true</latestVersionOnly>
+              <destination>${project.build.directory}/rap-e4</destination>
+            </configuration>
           </execution>
         </executions>
       </plugin>
     </plugins>
   </build>
-
+  <profiles>
+    <profile>
+      <id>single-zip</id>
+      <build>
+        <plugins>
+          <plugin>
+            <artifactId>maven-assembly-plugin</artifactId>
+            <version>2.5.3</version>
+            <configuration>
+              <finalName>cs-studio-eclipse-${cs-studio-central.version}</finalName>
+              <descriptor>assembly/package.xml</descriptor>
+            </configuration>
+            <executions>
+              <execution>
+                <id>create-archive-all</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>single</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>individual-zips</id>
+      <build>
+        <plugins>
+          <plugin>
+            <artifactId>maven-assembly-plugin</artifactId>
+            <version>2.5.3</version>
+            <executions>
+              <execution>
+                <id>create-archive-eclipse</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>single</goal>
+                </goals>
+                <configuration>
+                  <finalName>eclipse-${cs-studio-central.version}</finalName>
+                  <descriptor>assembly/package-eclipse.xml</descriptor>
+                </configuration>
+              </execution>
+              <execution>
+                <id>create-archive-eclipse-updates</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>single</goal>
+                </goals>
+                <configuration>
+                  <finalName>eclipse-updates-${cs-studio-central.version}</finalName>
+                  <descriptor>assembly/package-eclipse-updates.xml</descriptor>
+                </configuration>
+              </execution>
+              <execution>
+                <id>create-archive-orbit</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>single</goal>
+                </goals>
+                <configuration>
+                  <finalName>orbit-${cs-studio-central.version}</finalName>
+                  <descriptor>assembly/package-orbit.xml</descriptor>
+                </configuration>
+              </execution>
+              <execution>
+                <id>create-archive-efx</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>single</goal>
+                </goals>
+                <configuration>
+                  <finalName>efx-${cs-studio-central.version}</finalName>
+                  <descriptor>assembly/package-efx.xml</descriptor>
+                </configuration>
+              </execution>
+              <execution>
+                <id>create-archive-rap</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>single</goal>
+                </goals>
+                <configuration>
+                  <finalName>rap-${cs-studio-central.version}</finalName>
+                  <descriptor>assembly/package-rap.xml</descriptor>
+                </configuration>
+              </execution>
+              <execution>
+                <id>create-archive-rap-gef</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>single</goal>
+                </goals>
+                <configuration>
+                  <finalName>rap-gef-${cs-studio-central.version}</finalName>
+                  <descriptor>assembly/package-rap-gef.xml</descriptor>
+                </configuration>
+              </execution>
+              <execution>
+                <id>create-archive-rap-e4</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>single</goal>
+                </goals>
+                <configuration>
+                  <finalName>rap-e4-${cs-studio-central.version}</finalName>
+                  <descriptor>assembly/package-rap-e4.xml</descriptor>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>
