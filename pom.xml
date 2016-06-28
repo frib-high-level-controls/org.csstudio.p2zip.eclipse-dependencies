@@ -25,7 +25,6 @@ Contributors: Jan Hatje - created the pom to build the plug-ins -->
     <eclipse.release>mars</eclipse.release>
     <eclipse.version>4.5</eclipse.version>
     <orbit.version>R20160221192158</orbit.version>
-    <diirt.version>3.1.2</diirt.version>
     <efx.version>2.1.0</efx.version>
     <rap.version>3.0</rap.version>
     <rap-gef.version>20150327-1849</rap-gef.version>
@@ -81,7 +80,6 @@ Contributors: Jan Hatje - created the pom to build the plug-ins -->
         <artifactId>target-platform-configuration</artifactId>
         <version>${tycho.version}</version>
         <configuration>
-
           <environments>
             <environment>
               <os>linux</os>
@@ -247,6 +245,9 @@ Contributors: Jan Hatje - created the pom to build the plug-ins -->
   <profiles>
     <profile>
       <id>single-zip</id>
+      <activation>
+            <activeByDefault>true</activeByDefault>
+      </activation>
       <build>
         <plugins>
           <plugin>
