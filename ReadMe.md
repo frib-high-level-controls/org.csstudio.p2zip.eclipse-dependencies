@@ -1,4 +1,5 @@
 Makes p2 repos of all eclipse dependencies
+--------------------------------------------
 
 This does not only pull in the needed dependencies, but all of:
 
