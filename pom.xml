@@ -285,7 +285,7 @@ Contributors: Jan Hatje - created the pom to build the plug-ins -->
                   <goal>single</goal>
                 </goals>
                 <configuration>
-                  <finalName>eclipse-${cs-studio-central.version}</finalName>
+                  <finalName>eclipse-${eclipse.version}</finalName>
                   <descriptor>assembly/package-eclipse.xml</descriptor>
                 </configuration>
               </execution>
@@ -296,7 +296,7 @@ Contributors: Jan Hatje - created the pom to build the plug-ins -->
                   <goal>single</goal>
                 </goals>
                 <configuration>
-                  <finalName>eclipse-updates-${cs-studio-central.version}</finalName>
+                  <finalName>eclipse-updates-${eclipse.version}</finalName>
                   <descriptor>assembly/package-eclipse-updates.xml</descriptor>
                 </configuration>
               </execution>
@@ -307,7 +307,7 @@ Contributors: Jan Hatje - created the pom to build the plug-ins -->
                   <goal>single</goal>
                 </goals>
                 <configuration>
-                  <finalName>orbit-${cs-studio-central.version}</finalName>
+                  <finalName>orbit-${orbit.version}</finalName>
                   <descriptor>assembly/package-orbit.xml</descriptor>
                 </configuration>
               </execution>
@@ -318,7 +318,7 @@ Contributors: Jan Hatje - created the pom to build the plug-ins -->
                   <goal>single</goal>
                 </goals>
                 <configuration>
-                  <finalName>efx-${cs-studio-central.version}</finalName>
+                  <finalName>efx-${efx.version}</finalName>
                   <descriptor>assembly/package-efx.xml</descriptor>
                 </configuration>
               </execution>
@@ -329,7 +329,7 @@ Contributors: Jan Hatje - created the pom to build the plug-ins -->
                   <goal>single</goal>
                 </goals>
                 <configuration>
-                  <finalName>rap-${cs-studio-central.version}</finalName>
+                  <finalName>rap-${rap.version}</finalName>
                   <descriptor>assembly/package-rap.xml</descriptor>
                 </configuration>
               </execution>
@@ -340,7 +340,7 @@ Contributors: Jan Hatje - created the pom to build the plug-ins -->
                   <goal>single</goal>
                 </goals>
                 <configuration>
-                  <finalName>rap-gef-${cs-studio-central.version}</finalName>
+                  <finalName>rap-gef-${rap-gef.version}</finalName>
                   <descriptor>assembly/package-rap-gef.xml</descriptor>
                 </configuration>
               </execution>
@@ -351,7 +351,7 @@ Contributors: Jan Hatje - created the pom to build the plug-ins -->
                   <goal>single</goal>
                 </goals>
                 <configuration>
-                  <finalName>rap-e4-${cs-studio-central.version}</finalName>
+                  <finalName>rap-e4-${rap-e4.version}</finalName>
                   <descriptor>assembly/package-rap-e4.xml</descriptor>
                 </configuration>
               </execution>
